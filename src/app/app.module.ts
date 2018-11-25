@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LoginService } from './logar/login.service';
+import { GamesService } from './categorias/jogos.service';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +20,9 @@ import { OutrosComponent } from './categorias/outros/outros.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { LogarComponent } from './logar/logar.component';
 import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -37,9 +43,11 @@ import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.c
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [LoginService,GamesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

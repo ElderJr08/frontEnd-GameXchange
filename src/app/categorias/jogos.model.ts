@@ -8,5 +8,5 @@ export interface Jogos {
     insertDate:string,
     tradeDate:string,
     isAvailable: string,
-    users: Usuario
+    users: Usuario[]
 }

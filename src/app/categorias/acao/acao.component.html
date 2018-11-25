@@ -31,7 +31,7 @@
               </tr>
               <tr class="" *ngFor="let game of actions?.games">
                 <td *ngFor="let col of columns">
-                  <!-- {{game[col]}} -->
+                  {{game[col]}}
                 </td>
                 <ng-container *ngIf="isUserLoggedIn; then interested; else notinterested"></ng-container>
                 <ng-template #interested>

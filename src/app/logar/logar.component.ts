@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'gx-logar',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private login:LoginService) { }
 
   ngOnInit() {
   }
-
+  Logar(user, pass){
+    this.login.Logar(user, pass);
+  }
 }
