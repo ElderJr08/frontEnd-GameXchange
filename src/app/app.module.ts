@@ -15,6 +15,8 @@ import { RpgComponent } from './categorias/rpg/rpg.component';
 import { FpsComponent } from './categorias/fps/fps.component';
 import { OutrosComponent } from './categorias/outros/outros.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { LogarComponent } from './logar/logar.component';
+import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     RpgComponent,
     FpsComponent,
     OutrosComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    LogarComponent,
+    RegistrarusuarioComponent
   ],
   imports: [
     BrowserModule,

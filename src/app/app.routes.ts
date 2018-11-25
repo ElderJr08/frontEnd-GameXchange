@@ -8,6 +8,7 @@ import { EsportesComponent } from './categorias/esportes/esportes.component';
 import { RpgComponent } from './categorias/rpg/rpg.component';
 import { FpsComponent } from './categorias/fps/fps.component';
 import { OutrosComponent } from './categorias/outros/outros.component';
+import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
 
 
 export const ROUTES: Routes =[
@@ -19,7 +20,8 @@ export const ROUTES: Routes =[
     {path:'genero/fps', component: FpsComponent},
     {path:'genero/outros', component: OutrosComponent},
     {path:'meusjogos', component: MeusjogosComponent},
-    {path:'minhastrocas', component: MinhastrocasComponent}
+    {path:'minhastrocas', component: MinhastrocasComponent},
+    {path:'registrarusuario', component: RegistrarusuarioComponent}
     
 
 

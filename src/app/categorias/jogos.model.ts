@@ -1,3 +1,5 @@
+import { Usuario } from '../usuarios/usuario.model';
+
 export interface Jogos {
     id: number,
     name: string,
@@ -6,5 +8,5 @@ export interface Jogos {
     insertDate:string,
     tradeDate:string,
     isAvailable: string,
-    users: []
+    users: Usuario
 }
