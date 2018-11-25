@@ -1,0 +1,143 @@
+<section class="content-header">
+  <h1>Meus jogos</h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Página pricipal</a></li>
+    <li><a href="#">Meus jogos</a></li>
+  </ol>
+</section>
+<section class="content">
+  <ng-container *ngIf="isUserLoggedIn; then Logged; else notLogged"></ng-container>
+  <ng-template #Logged>
+    <button type="button" class="btn btn-default btn-newgame" data-toggle="modal" data-target="#modal-default">Novo jogo</button>
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Adicionando um novo jogo</h4>
+            </div>
+            <div class="modal-body">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                   <h3 class="box-title">Jogo</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <!-- form start -->
+                  <form role="form">
+                    <div class="box-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Título</label>
+                        <input type="text" class="form-control" #TittleGame id="exampleInputEmail1" placeholder="Titulo do jogo">
+                      </div>
+                      <div class="form-group">
+                        <label for="ExampleCategoria">Categoria</label>
+                        <select class="form-control" id="ExampleCategoria" #CategoryGame>
+                          <option>Selecione</option>
+                          <option value="4">Ação</option>
+                          <option value="6">Aventura</option>
+                          <option value="6">Esportes</option>
+                          <option value="3">RPG</option>
+                          <option value="5">Outros</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="ExamplePlataform">Plataforma</label>
+                              <select class="form-control" id="ExamplePlataforma" #PlataformGame>
+                                <option>Selecione</option>
+                                <option value="Ps4">Ps4</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="Nintendo Switch">Nintendo Switch</option>
+                                <option value="GameBoy">GameBoy</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Descrição</label>
+                              <textarea class="form-control" #Description rows="3" placeholder="Digite aqui..." style="margin: 0px -16.5px 0px 0px; height: 131px; width: 519px;"></textarea>
+                            </div>
+                            <!-- <div class="form-group">
+                              <label for="exampleInputFile">Anexar foto</label>
+                              <input type="file" id="exampleInputFile">
+                              <p class="help-block"></p>
+                            </div> -->
+                          </div>
+                          <!-- /.box-body -->
+                          <div class="box-footer">
+                            <button type="button" (click)="Cadastrar(TittleGame.value,CategoryGame.value,Description.value,PlataformGame.value);" class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal" style="margin-right:5px">Cancelar</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- /.modal -->
+              <button type="button" id="btn-modalOpen" class="btn btn-info" data-toggle="modal" data-target="#modal-info" style="display:none">Launch Info Modal</button>
+              <div class="modal modal-info fade" id="modal-info" style="display: none;">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">Novo jogo cadastrado!</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h3>Seu jogo foi cadastrado com sucesso :)</h3>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Ok</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="box">
+                      <div class="box-header">
+                        <h3 class="box-title">Jogos</h3>
+                        <div class="box-tools">
+                          <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar jogo">                     
+                            <div class="input-group-btn">
+                              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                          <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Plataforma</th>
+                            <!-- <th>Disponível p/ Troca</th> -->
+                          </tr>
+                          <tr class="" *ngFor="let game of games">
+                            <td *ngFor="let col of columns">
+                              <!-- {{game[col]}} -->
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /.box -->
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template #notLogged>
+                <div class="box box-default">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Usuário não encontrado!</h3>
+                  </div>
+                  <div class="box-body">
+                    Sem lista de jogos para apresentar ;(
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+              </ng-template>
+</section>

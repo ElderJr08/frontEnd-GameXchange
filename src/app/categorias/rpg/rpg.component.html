@@ -1,0 +1,67 @@
+<div class="container">
+    <section class="content-header">
+      <h1>{{categoria_titulo}}</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Página pricipal</a></li>
+        <li><a href="#">{{categoria_titulo}}</a></li>
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Jogos</h3>
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar jogo">                     
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Plataforma</th>
+                  <th>Disponível p/ Troca</th>
+                </tr>
+                <tr class="" *ngFor="let game of actions?.games">
+                  <td *ngFor="let col of columns">
+                    <!-- {{game[col]}} -->
+                  </td>
+                  <ng-container *ngIf="isUserLoggedIn; then interested; else notinterested"></ng-container>
+                  <ng-template #interested>
+                    <td>Disponível</td>
+                    <td>
+                      <button type="button" class="btn btn-default btn-newgame" data-toggle="modal" data-target="#modal-default">Tenho interesse</button>
+                    </td>
+                    <div class="modal fade" id="modal-default">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Notificação de interesse</h4>
+                          </div>
+                          <div class="modal-body">
+                            <span>O usuário desse jogo foi <b>notificado</b>! Agora é só esperar o <b>Match</b> ;)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template #notinterested>
+                    <td>Indisponível</td>
+                  </ng-template>
+                </tr>
+                <!-- <td>{{actions.games[0].name}}</td> -->
+              </table>
+            </div>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+  </div>

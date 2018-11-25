@@ -1,0 +1,50 @@
+ <!-- Content Lista de trocas -->
+ <section class="content-header">
+    <h1>
+      Minhas de trocas
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Página pricipal</a></li>
+      <li><a href="#">Minhas trocas</a></li>
+    </ol>
+  </section>
+  <section class="content">
+      <ng-container *ngIf="isUserLoggedIn; then Logged; else notLogged"></ng-container>
+      <ng-template #Logged>
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Interessados</h3>
+    
+                  <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar usuário">
+    
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                  <!-- <gx-main-table></gx-main-table> -->
+                </div>
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #notLogged>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Usuário não encontrado!</h3>
+                </div>
+                <div class="box-body">
+                  Sem trocas para apresentar :(
+                </div>
+                <!-- /.box-body -->
+              </div>
+        </ng-template> 
+  </section>
+  <!-- /end lista de trocas -->
