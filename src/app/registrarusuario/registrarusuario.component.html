@@ -6,21 +6,30 @@
     <div class="register-box-body">
       <p class="login-box-msg">Junte-se ao GameXchange!</p>
   
-      <form action="">
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Nome completo">
+      <div id="registerUser">
+        <div class="form-group has-feedback" id="input-register-name">
+          <input type="text" id="registerName" class="form-control " placeholder="Nome completo" name="register" (keyup)="removeWarning('#input-register-name', '#msgRegisterName');">
+          <small style="color:#dd4b39" id="msgRegisterName"></small>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="E-mail">
+        <div class="form-group has-feedback" id="input-register-email">
+          <input type="email" id="registerEmail" class="form-control" placeholder="E-mail" name="register" (keyup)="removeWarning('#input-register-email', '#msgRegisterEmail');">
+          <small style="color:#dd4b39" id="msgRegisterEmail"></small>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Senha">
+        <div class="form-group has-feedback" id="input-register-cellphone">
+          <input type="text" id="registerCellphone" class="form-control" placeholder="Celular" name="register" (keyup)="removeWarning('#input-register-cellphone', '#msgRegisterCellphone');">
+          <small style="color:#dd4b39" id="msgRegisterCellphone"></small>
+          <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback" id="input-register-password">
+          <input type="password" id="registerPassword" class="form-control" placeholder="Senha" name="register" (keyup)="removeWarning('#input-register-password','#msgRegisterPassword');">
+          <small style="color:#dd4b39" id="msgRegisterPassword"></small>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Repetir senha">
+        <div class="form-group has-feedback" id="input-register-repassword">
+          <input type="password" id="registerRePassword" class="form-control" placeholder="Repetir senha" name="register" (keyup)="removeWarning('#input-register-repassword', '#msgRegisterRepeatPassword');">
+          <small style="color:#dd4b39" id="msgRegisterRepeatPassword"></small>
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
         <div class="row">
@@ -33,26 +42,12 @@
           </div> -->
           <!-- /.col -->
           <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Criar conta</button>
+            <button (click)="RegisterUser();" class="btn btn-primary btn-block btn-flat">Criar conta</button>
           </div>
           <!-- /.col -->
         </div>
-      </form>
+      </div>
       <br>
       <a  data-toggle="modal" data-target="#modal-login" class="text-center" style="cursor:pointer;">Já possuo uma conta</a>
-      <div class="modal" id="modal-login">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Login</h4>
-            </div>
-            <div class="modal-body">
-              <gx-logar></gx-logar> 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.form-box -->
   </div>
   <!-- /.register-box -->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -8,7 +9,7 @@ declare var $: any;
   styleUrls: ['./logar.component.less']
 })
 export class LogarComponent implements OnInit {
-  constructor(private login:LoginService) { }
+  constructor(private login:LoginService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -37,6 +38,8 @@ export class LogarComponent implements OnInit {
         data =>{
           console.log(data);
           $('#modal-login').toggle();
+          localStorage.setItem('logado','true');
+          location.reload();
         },
         err =>{ 
           console.log(err);

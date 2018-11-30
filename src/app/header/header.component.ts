@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit{
               private gameService: GamesService) {
     /*this.login.isUserLoggedIn.subscribe( value => {
       if(value){
-        this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
+        
       }else{
         this.isUserLoggedIn = false;
       }
@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit{
    }
 
   ngOnInit(){
+    this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
   }
   Exit(){
     localStorage.clear();
