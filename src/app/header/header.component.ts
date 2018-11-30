@@ -12,6 +12,7 @@ declare var $: any;
 export class HeaderComponent implements OnInit{
   isUserLoggedIn: boolean;
   NickName: string;
+  FullName: string;
 
   constructor(/*private login: LoginService,*/
               private gameService: GamesService) {
@@ -26,6 +27,8 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(){
     this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
+    this.NickName = localStorage.getItem('nickname');
+    this.FullName = localStorage.getItem('name');
   }
   Exit(){
     localStorage.clear();

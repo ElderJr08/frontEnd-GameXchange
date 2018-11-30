@@ -39,6 +39,8 @@ export class LogarComponent implements OnInit {
           console.log(data);
           $('#modal-login').toggle();
           localStorage.setItem('logado','true');
+          localStorage.setItem('nickname',data['nickname']);
+          localStorage.setItem('name',data['name']);
           location.reload();
         },
         err =>{ 
