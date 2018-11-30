@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
+    public isUserLoggedIn: boolean;
     /*public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('logado')));*/
     
     constructor(private http: HttpClient/*,

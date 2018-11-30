@@ -7,11 +7,13 @@
     <p class="login-box-msg">Insira seu login e senha para começar!</p>
     <form>
       <div class="form-group has-feedback" id="input-username">
-        <input type="email" id="username" #username required name="UserName" class="form-control" value="jose@gmail.com" placeholder="usuário">
+        <input type="email" id="username" #username required name="login" class="form-control" value="jose@gmail.com" placeholder="usuário" (keyup)="removeWarning('#input-username','#msgUser');">
+        <small style="color:#dd4b39" id="msgUser"></small>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback" id="input-password">
-        <input type="password" id="password" #password required name="Password" class="form-control" value="123456" placeholder="senha">
+        <input type="password" id="password" #password required name="login" class="form-control" value="123456" placeholder="senha" (keyup)="removeWarning('#input-password','#msgPassword');">
+        <small style="color:#dd4b39" id="msgPassword"></small>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
