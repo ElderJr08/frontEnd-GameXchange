@@ -6,12 +6,12 @@
   <div class="login-box-body">
     <p class="login-box-msg">Insira seu login e senha para começar!</p>
     <form>
-      <div class="form-group has-feedback">
-        <input type="email" #UserName ngModel name="UserName" class="form-control" value="jose@gmail.com" placeholder="usuário">
+      <div class="form-group has-feedback" id="input-username">
+        <input type="email" id="username" #username required name="UserName" class="form-control" value="jose@gmail.com" placeholder="usuário">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
-        <input type="password" #Password ngModel name="Password" class="form-control" value="123456" placeholder="senha">
+      <div class="form-group has-feedback" id="input-password">
+        <input type="password" id="password" #password required name="Password" class="form-control" value="123456" placeholder="senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -24,7 +24,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="button" (click)="Logar(UserName.value,Password.value)" data-dismiss="modal" class="btn btn-primary btn-block btn-flat">Entrar</button>
+          <button type="button" (click)="Logar(username.value,password.value)" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
         <!-- /.col -->
       </div>

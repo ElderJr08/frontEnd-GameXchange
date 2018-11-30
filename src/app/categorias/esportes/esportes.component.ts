@@ -14,15 +14,15 @@ export class EsportesComponent implements OnInit {
   actions: Categoria;
   columns: string[];
   
-  constructor(private login: LoginService,
+  constructor(/*private login: LoginService,*/
               private gameService: GamesService) {
-    this.login.isUserLoggedIn.subscribe( value => {
+    /*this.login.isUserLoggedIn.subscribe( value => {
       if(value){
         this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
       }else{
         this.isUserLoggedIn = false;
       }
-    });
+    });*/
   }
  
   ngOnInit() {

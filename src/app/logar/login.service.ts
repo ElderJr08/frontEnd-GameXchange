@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
-    public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('logado')));
+    /*public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('logado')));*/
     
-    constructor(private http: HttpClient,
-                private router: Router){}
+    constructor(private http: HttpClient/*,
+                private router: Router*/){}
     
     Logar(user,pass){
-        let router = this.router;
-        let isUserLoggedIn = this.isUserLoggedIn;
+        /*let router = this.router;
+        let isUserLoggedIn = this.isUserLoggedIn;*/
         let httpHeaders = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Cache-Control', 'no-cache')
@@ -25,7 +25,8 @@ export class LoginService {
             headers: httpHeaders
        }; 
 
-      return this.http.post(`${MY_API}/login`, null, options).subscribe(function(res){
+      return this.http.post(`${MY_API}/login`, null, options)/*.subscribe(function(res){
+          console.log(res);
             if(res === null){
                 console.log('ok');      
                 if(localStorage['token'] !== ''){
@@ -36,8 +37,7 @@ export class LoginService {
                     isUserLoggedIn.next(true);
                 }
             }
-        });
-
+        });*/
     }
 
 }

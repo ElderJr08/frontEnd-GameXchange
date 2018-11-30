@@ -13,10 +13,7 @@ export class GamesService {
 
     constructor(private http: Http){}
 
-    action(categoria): Observable<Categoria>{
-        console.log(categoria);
-        console.log(this.http.get(`${MY_API}/category/${categoria}`).pipe(
-        map(response => response.json())));
+    action(categoria): Observable<Categoria>{    
         return this.http.get(`${MY_API}/category/${categoria}`).pipe(
         map(response => response.json()));
     }

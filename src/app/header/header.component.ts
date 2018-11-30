@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../logar/login.service';
+import { GamesService } from '../categorias/jogos.service';
 
 declare var $: any;
 
@@ -12,16 +13,15 @@ export class HeaderComponent implements OnInit{
   isUserLoggedIn: boolean;
   NickName: string;
 
-  constructor(private login: LoginService) {
-    this.login.isUserLoggedIn.subscribe( value => {
-      console.log(value);
+  constructor(/*private login: LoginService,*/
+              private gameService: GamesService) {
+    /*this.login.isUserLoggedIn.subscribe( value => {
       if(value){
         this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
-        this.NickName = localStorage.getItem('nickname');
       }else{
         this.isUserLoggedIn = false;
       }
-    });
+    });*/
    }
 
   ngOnInit(){

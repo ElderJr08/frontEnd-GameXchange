@@ -16,21 +16,31 @@ export class AcaoComponent implements OnInit {
   actions: Categoria;
   columns: string[];
 
-  constructor(private login: LoginService,
+  constructor(/*private login: LoginService,*/
               private gameService: GamesService) {
-    this.login.isUserLoggedIn.subscribe( value => {
+    /*this.login.isUserLoggedIn.subscribe( value => {
       if(value){
         this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
       }else{
         this.isUserLoggedIn = false;
       }
-    });
+    });*/
   }
  
   ngOnInit() {
     this.categoria_titulo = 'Ação';
-    this.gameService.action(4)
-    .subscribe(actions => this.actions = actions);
+    this.gameService.action(8)
+    .subscribe(
+      data => {
+        this.actions = data;
+      },
+      err =>{
+        console.log(err['status']);
+        if(err['status'] === 404){
+          alert('fodeu');
+        }
+      }
+    );
     this.columns = this.gameService.getColumns(); 
   }
 
