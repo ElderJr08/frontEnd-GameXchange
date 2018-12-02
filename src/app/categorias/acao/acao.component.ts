@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/logar/login.service';
 import { GamesService } from '../jogos.service';
 import { Categoria } from '../categoria.model';
 
@@ -16,22 +15,15 @@ export class AcaoComponent implements OnInit {
   actions: Categoria;
   columns: string[];
 
-  constructor(/*private login: LoginService,*/
-              private gameService: GamesService) {
-    /*this.login.isUserLoggedIn.subscribe( value => {
-      if(value){
-        this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
-      }else{
-        this.isUserLoggedIn = false;
-      }
-    });*/
+  constructor(private gameService: GamesService) {
   }
  
   ngOnInit() {
-    this.categoria_titulo = 'Ação';
-    this.gameService.action(8)
+    this.categoria_titulo = localStorage.getItem('Category');
+    this.gameService.action(parseInt(localStorage.getItem('ID_Category')))
     .subscribe(
       data => {
+        console.log(data);
         this.actions = data;
       },
       err =>{

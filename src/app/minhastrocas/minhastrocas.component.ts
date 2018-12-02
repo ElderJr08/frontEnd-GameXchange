@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from '../categorias/jogos.service';
 
 @Component({
   selector: 'gx-minhastrocas',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinhastrocasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameService: GamesService) { }
 
   ngOnInit() {
   }

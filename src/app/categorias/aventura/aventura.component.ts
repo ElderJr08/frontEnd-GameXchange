@@ -14,20 +14,12 @@ export class AventuraComponent implements OnInit {
   actions: Categoria;
   columns: string[];
   
-  constructor(/*private login: LoginService,*/
-              private gameService: GamesService) {
-    /*this.login.isUserLoggedIn.subscribe( value => {
-      if(value){
-        this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
-      }else{
-        this.isUserLoggedIn = false;
-      }
-    });*/
+  constructor(private gameService: GamesService) {
   }
  
   ngOnInit() {
-    this.categoria_titulo = 'Aventura';
-    this.gameService.action(4)
+    this.categoria_titulo = localStorage.getItem('Category');
+    this.gameService.action(parseInt(localStorage.getItem('ID_Category')))
     .subscribe(actions => this.actions = actions);
     this.columns = this.gameService.getColumns(); 
   }

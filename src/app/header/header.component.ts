@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../logar/login.service';
 import { GamesService } from '../categorias/jogos.service';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 declare var $: any;
+
 
 @Component({
   selector: 'gx-header',
@@ -13,17 +15,26 @@ export class HeaderComponent implements OnInit{
   isUserLoggedIn: boolean;
   NickName: string;
   FullName: string;
+  Genders: [];
 
-  constructor(/*private login: LoginService,*/
-              private gameService: GamesService) {
-    /*this.login.isUserLoggedIn.subscribe( value => {
-      if(value){
-        
-      }else{
-        this.isUserLoggedIn = false;
-      }
-    });*/
-   }
+  constructor(private gameService: GamesService,
+              private router: Router) {
+    this.gameService.getCategorias().pipe(
+      map(response => response.json())
+      ).subscribe(
+        data => {
+          this.Genders = data;
+          console.log(this.Genders);
+          /*let categorias = '';
+          for(var x in data){
+            console.log(data[x]['id']);
+            console.log(data[x]['name']);
+            categorias+='<li><a href="javascript:;" onclick="goTo('+data[x]['id']+','+data[x]['name']+')" style="text-transform: capitalize;">'+data[x]['name']+'</a></li>'
+          }
+          document.getElementById('teste').innerHTML = categorias;*/
+        }
+      )
+  }
 
   ngOnInit(){
     this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
@@ -35,10 +46,14 @@ export class HeaderComponent implements OnInit{
     location.replace('');
   }
 
-  goTo(whatRoute){
-    console.log(whatRoute)
+  goTo(id, category){
+    console.log(id)
+    localStorage.setItem('ID_Category',id);
+    localStorage.setItem('Category',category);
+
+    this.router.navigate(['/genero/'+category+'']);
+
     return false;
   }
-
 }
 

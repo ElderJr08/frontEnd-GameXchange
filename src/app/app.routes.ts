@@ -13,7 +13,7 @@ import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.c
 
 export const ROUTES: Routes =[
     {path:'', component: HomeComponent},
-    {path:'genero/acao', component: AcaoComponent},
+    {path:'genero/ação', component: AcaoComponent},
     {path:'genero/aventura', component: AventuraComponent},
     {path:'genero/esportes', component: EsportesComponent},
     {path:'genero/rpg', component: RpgComponent},

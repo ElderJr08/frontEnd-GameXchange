@@ -63,7 +63,7 @@
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                            <button type="button" (click)="Cadastrar(TittleGame.value,CategoryGame.value,Description.value,PlataformGame.value);" class="btn btn-primary">Salvar</button>
+                            <button type="button" (click)="RegisterGame(TittleGame.value,CategoryGame.value,Description.value,PlataformGame.value);" class="btn btn-primary">Salvar</button>
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal" style="margin-right:5px">Cancelar</button>
                           </div>
                         </form>
@@ -117,9 +117,9 @@
                             <th>Plataforma</th>
                             <!-- <th>Disponível p/ Troca</th> -->
                           </tr>
-                          <tr class="" *ngFor="let game of games">
+                          <tr class="" *ngFor="let game of actions">
                             <td *ngFor="let col of columns">
-                              <!-- {{game[col]}} -->
+                              {{game[col]}}
                             </td>
                           </tr>
                         </table>

@@ -15,13 +15,14 @@
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown">Gênero <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a [routerLink]="['genero/acao']">Ação</a></li>
+              <li *ngFor="let category of Genders"><a style="text-transform: capitalize;" href="javascript:;" (click)="goTo(category.id, category.name);">{{category.name}}</a></li>
+              <!--<li><a href="javascript:;" (click)="goTo(8,'ação')">Ação</a></li>
               <li><a [routerLink]="['genero/aventura']">Aventura</a></li>
               <li><a [routerLink]="['genero/esportes']">Esportes</a></li>
               <li><a [routerLink]="['genero/rpg']">RPG</a></li>
               <li><a [routerLink]="['genero/fps']">FPS</a></li>
               <li class="divider"></li>
-              <li><a [routerLink]="['genero/outros']">Outros</a></li>
+              <li><a [routerLink]="['genero/outros']">Outros</a></li>-->
             </ul>
           </li>
         </ul>
