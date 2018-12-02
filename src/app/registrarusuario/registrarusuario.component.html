@@ -15,7 +15,7 @@
         <div class="form-group has-feedback" id="input-register-nickname">
             <input type="text" id="registerNickname" #RegisterNickname class="form-control" placeholder="Nickname" name="register" (keyup)="removeWarning('#input-register-nickname', '#msgRegisterNickname');">
             <small style="color:#dd4b39" id="msgRegisterNickname"></small>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
         <div class="form-group has-feedback" id="input-register-email">
           <input type="email" id="registerEmail" #RegisterEmail class="form-control" placeholder="E-mail" name="register" (keyup)="removeWarning('#input-register-email', '#msgRegisterEmail');">
@@ -23,8 +23,8 @@
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback cellphone">
-          <div class="form-group has-feedback" #RegisterDDD id="input-register-ddd">
-            <input type="text" id="registerDDD" class="my-form-control ddd" placeholder="DDD" name="register" (keyup)="removeWarning('#registerDDD', '#msgRegisterCellphone');">
+          <div class="form-group has-feedback" id="input-register-ddd">
+            <input type="text" id="registerDDD" #RegisterDDD class="my-form-control ddd" placeholder="DDD" name="register" (keyup)="removeWarning('#registerDDD', '#msgRegisterCellphone');">
           </div>
           <div class="form-group has-feedback" id="input-register-phone">
             <input type="text" id="registerPhone" #RegisterPhone class="my-form-control cellphone-input" placeholder="Celular" name="register" (keyup)="removeWarning('#registerPhone', '#msgRegisterCellphone');">
@@ -38,7 +38,7 @@
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback" id="input-register-repassword">
-          <input type="password" id="registerRePassword" class="form-control" placeholder="Repetir senha" name="register" (keyup)="removeWarning('#input-register-repassword', '#msgRegisterRepeatPassword');">
+          <input type="password" id="registerRePassword" #RegisterRePass class="form-control" placeholder="Repetir senha" name="register" (keyup)="removeWarning('#input-register-repassword', '#msgRegisterRepeatPassword');">
           <small style="color:#dd4b39" id="msgRegisterRepeatPassword"></small>
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
@@ -52,12 +52,31 @@
           </div> -->
           <!-- /.col -->
           <div class="col-xs-4">
-            <button (click)="RegisterUser(RegisterName.value,RegisterNickname.value,RegisterEmail.value,RegisterPass.value,RegisterDDD.value,RegisterPhone.value);" class="btn btn-primary btn-block btn-flat">Criar conta</button>
+            <button (click)="RegisterUser(RegisterName.value,RegisterNickname.value,RegisterEmail.value,RegisterPass.value,RegisterRePass.value,RegisterDDD.value,RegisterPhone.value);" class="btn btn-primary btn-block btn-flat">Criar conta</button>
           </div>
           <!-- /.col -->
         </div>
       </div>
       <br>
       <a  data-toggle="modal" data-target="#modal-login" class="text-center" style="cursor:pointer;">Já possuo uma conta</a>
+      <div class="modal" id="modal-register-success">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" (click)="close();" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                <h3 class="header-container">Cadastro realizado com sucesso!</h3>
+                <img class="img-notification-register" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1a_2dA37HFFpmmXCwa4pyZq4k4ESwPMoQ-a-6H4EjRgA-vmNS" alt="" >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
   <!-- /.register-box -->
+  
+  
+  

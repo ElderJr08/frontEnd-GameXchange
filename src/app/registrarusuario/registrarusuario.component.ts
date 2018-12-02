@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './registrarusuario.service';
+import { Router } from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'gx-registrarusuario',
@@ -8,7 +9,8 @@ declare var $: any;
 })
 export class RegistrarusuarioComponent implements OnInit {
 
-  constructor(private registerUser: RegisterService) { }
+  constructor(private registerUser: RegisterService,
+              private route: Router) { }
 
   ngOnInit() {
   }
@@ -22,7 +24,13 @@ export class RegistrarusuarioComponent implements OnInit {
 
   }
 
-  RegisterUser(name,nickname,email,password,ddd,cellphone){
+  close(){
+    $('#modal-register-success').toggle();
+    return false;
+  }
+
+  RegisterUser(name,nickname,email,password,repassword,ddd,cellphone){
+    console.log(ddd);
     var campo_ok = true;
     for(var i =0; i<$('#registerUser input[name=register]').length;i++){
       if($('#registerUser input[name=register]')[i].value === ''){
@@ -52,16 +60,25 @@ export class RegistrarusuarioComponent implements OnInit {
       }
     }
     if(campo_ok){
-      this.registerUser.RegisterUser(name,nickname,email,password,ddd,cellphone).subscribe(
-        data =>{
-          console.log(data);
-          
-        },
-        err =>{ 
-          console.log(err);
-         
-        }
-      );
+      if(password === repassword){
+        this.registerUser.RegisterUser(name,nickname,email,password,ddd,cellphone).subscribe(
+          data =>{
+            console.log(data);
+            $('#modal-register-success').toggle();
+            setTimeout(() => {
+              this.route.navigate(['']);
+            }, 1000);
+            
+          },
+          err =>{ 
+            console.log(err);
+           
+          }
+        );
+      }else{
+        $('#input-register-repassword').addClass('has-error');
+        $('#msgRegisterRepeatPassword').html('Senhas diferentes.');
+      }
     }
   }
 
