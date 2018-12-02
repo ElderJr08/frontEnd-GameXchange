@@ -22,6 +22,7 @@ import { LogarComponent } from './logar/logar.component';
 import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { RegisterService } from './registrarusuario/registrarusuario.service';
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import { HttpModule } from '@angular/http';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [LoginService,GamesService],
+  providers: [LoginService,GamesService,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

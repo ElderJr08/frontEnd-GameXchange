@@ -8,22 +8,32 @@
   
       <div id="registerUser">
         <div class="form-group has-feedback" id="input-register-name">
-          <input type="text" id="registerName" class="form-control " placeholder="Nome completo" name="register" (keyup)="removeWarning('#input-register-name', '#msgRegisterName');">
+          <input type="text" id="registerName" #RegisterName class="form-control " placeholder="Nome completo" name="register" (keyup)="removeWarning('#input-register-name', '#msgRegisterName');">
           <small style="color:#dd4b39" id="msgRegisterName"></small>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
+        <div class="form-group has-feedback" id="input-register-nickname">
+            <input type="text" id="registerNickname" #RegisterNickname class="form-control" placeholder="Nickname" name="register" (keyup)="removeWarning('#input-register-nickname', '#msgRegisterNickname');">
+            <small style="color:#dd4b39" id="msgRegisterNickname"></small>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
         <div class="form-group has-feedback" id="input-register-email">
-          <input type="email" id="registerEmail" class="form-control" placeholder="E-mail" name="register" (keyup)="removeWarning('#input-register-email', '#msgRegisterEmail');">
+          <input type="email" id="registerEmail" #RegisterEmail class="form-control" placeholder="E-mail" name="register" (keyup)="removeWarning('#input-register-email', '#msgRegisterEmail');">
           <small style="color:#dd4b39" id="msgRegisterEmail"></small>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback" id="input-register-cellphone">
-          <input type="text" id="registerCellphone" class="form-control" placeholder="Celular" name="register" (keyup)="removeWarning('#input-register-cellphone', '#msgRegisterCellphone');">
-          <small style="color:#dd4b39" id="msgRegisterCellphone"></small>
-          <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+        <div class="form-group has-feedback cellphone">
+          <div class="form-group has-feedback" #RegisterDDD id="input-register-ddd">
+            <input type="text" id="registerDDD" class="my-form-control ddd" placeholder="DDD" name="register" (keyup)="removeWarning('#registerDDD', '#msgRegisterCellphone');">
+          </div>
+          <div class="form-group has-feedback" id="input-register-phone">
+            <input type="text" id="registerPhone" #RegisterPhone class="my-form-control cellphone-input" placeholder="Celular" name="register" (keyup)="removeWarning('#registerPhone', '#msgRegisterCellphone');">
+            <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+          </div>
+          <small style="color:#dd4b39;position: absolute;top: 37px;left: 1%;white-space: nowrap;" id="msgRegisterCellphone"></small>
         </div>
         <div class="form-group has-feedback" id="input-register-password">
-          <input type="password" id="registerPassword" class="form-control" placeholder="Senha" name="register" (keyup)="removeWarning('#input-register-password','#msgRegisterPassword');">
+          <input type="password" id="registerPassword" #RegisterPass class="form-control" placeholder="Senha" name="register" (keyup)="removeWarning('#input-register-password','#msgRegisterPassword');">
           <small style="color:#dd4b39" id="msgRegisterPassword"></small>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
@@ -42,7 +52,7 @@
           </div> -->
           <!-- /.col -->
           <div class="col-xs-4">
-            <button (click)="RegisterUser();" class="btn btn-primary btn-block btn-flat">Criar conta</button>
+            <button (click)="RegisterUser(RegisterName.value,RegisterNickname.value,RegisterEmail.value,RegisterPass.value,RegisterDDD.value,RegisterPhone.value);" class="btn btn-primary btn-block btn-flat">Criar conta</button>
           </div>
           <!-- /.col -->
         </div>
