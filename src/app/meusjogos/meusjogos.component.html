@@ -8,7 +8,7 @@
 <section class="content">
   <ng-container *ngIf="isUserLoggedIn; then Logged; else notLogged"></ng-container>
   <ng-template #Logged>
-    <button type="button" class="btn btn-default btn-newgame" data-toggle="modal" data-target="#modal-default">Novo jogo</button>
+    <button type="button" class="btn btn-newgame" data-toggle="modal" data-target="#modal-default">Novo jogo</button>
     <div class="modal fade" id="modal-default">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -35,11 +35,12 @@
                         <label for="ExampleCategoria">Categoria</label>
                         <select class="form-control" id="ExampleCategoria" #CategoryGame (change)="removeWarning('#input-category', '#msgCategory');">
                           <option>Selecione</option>
-                          <option value="8">Ação</option>
+                          <option style="text-transform: capitalize;" *ngFor="let category of Genders" value="{{category.id}}">{{category.name}}</option>
+                          <!--<option value="8">Ação</option>
                           <option value="9">Aventura</option>
                           <option value="6">Esportes</option>
                           <option value="3">RPG</option>
-                          <option value="5">Outros</option>
+                          <option value="5">Outros</option>-->
                         </select>
                         <small style="color:#dd4b39" id="msgCategory"></small>
                       </div>

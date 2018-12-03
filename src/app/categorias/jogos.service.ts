@@ -64,7 +64,7 @@ export class GamesService {
 
     }
 
-    Assign(gameId): Observable<any>{
+    Assign(gameId){
       let httpHeaders = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Cache-Control', 'no-cache')
@@ -80,6 +80,8 @@ export class GamesService {
         }, 
         options);
     }
+
+   
 
     
 }

@@ -29,7 +29,7 @@
                 <th>Plataforma</th>
                 <th>Disponível p/ Troca</th>
               </tr>
-              <tr class="" *ngFor="let game of actions?.games">
+              <tr class="" *ngFor="let game of actions">
                 <td *ngFor="let col of columns">
                   {{game[col]}}
                 </td>
@@ -37,7 +37,7 @@
                 <ng-template #interested>
                   <td>Disponível</td>
                   <td>
-                    <button type="button" class="btn btn-default btn-newgame" data-toggle="modal" data-target="#modal-default">Tenho interesse</button>
+                    <button type="button" class="btn btn-newgame" data-toggle="modal" data-target="#modal-default">Tenho interesse</button>
                   </td>
                   <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">

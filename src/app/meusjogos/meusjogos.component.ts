@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../categorias/jogos.service';
+import { map } from 'rxjs/operators';
 
 declare var $:any;
 
@@ -13,10 +14,17 @@ export class MeusjogosComponent implements OnInit {
   actions: any;
   isUserLoggedIn: boolean;
   columns: string[];
-  a:any;
+  Genders: [];
 
-  constructor(private gameService: GamesService) { }
-
+  constructor(private gameService: GamesService) {
+    this.gameService.getCategorias().pipe(
+      map(response => response.json())
+      ).subscribe(
+        data => {
+          this.Genders = data;
+          console.log(this.Genders);
+        });
+  }
   ngOnInit() {
 
     this.gameService.getMyGames().subscribe(
