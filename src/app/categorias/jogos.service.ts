@@ -44,6 +44,7 @@ export class GamesService {
     }
 
     RegisterGame(titulo,desc,plat,categ){
+      console.log('titulo: '+titulo,'desc: '+ desc,'plat: '+ plat,'Categoria: '+ categ);
       let httpHeaders = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Cache-Control', 'no-cache')
@@ -57,10 +58,27 @@ export class GamesService {
           "name":titulo,
           "description":desc,
           "platform":plat,
-          "categoryId":categ
+          "categoryId":parseInt(categ)
 
         },options);
 
+    }
+
+    Assign(gameId): Observable<any>{
+      let httpHeaders = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Cache-Control', 'no-cache')
+        .set('Authorization', localStorage['token']);
+      
+        let options = {
+          headers: httpHeaders
+        }
+
+      return this.httpClient.post(`${MY_API}/user/game`,
+       {
+         gameId: gameId
+        }, 
+        options);
     }
 
     

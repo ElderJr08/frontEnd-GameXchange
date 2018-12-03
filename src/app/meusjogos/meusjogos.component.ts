@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../categorias/jogos.service';
-import { Categoria } from '../categorias/categoria.model';
-import { RegisterService } from '../registrarusuario/registrarusuario.service';
+
+declare var $:any;
 
 @Component({
   selector: 'gx-meusjogos',
@@ -29,7 +29,60 @@ export class MeusjogosComponent implements OnInit {
     this.columns = this.gameService.getColumns(); 
   }
 
-  RegisterService(titulo,desc,plat,categ){
+  removeWarning(id_input, id_small){
+    console.log(id_input);
+    $(id_input).css('border-color','');
+    $(id_input).removeClass('has-error');
+    $(id_small).html('');
+    return false;
+
+  }
+
+  RegisterGame(titulo,desc,plat,categ){
+    console.log('titulo: '+titulo,'desc: '+ desc,'plat: '+ plat,'Categoria: '+ categ);
+    var campo_ok = true;
+    if(titulo === ''){
+      $('#input-title').addClass('has-error');
+      $('#msgTitle').html('Preencha o campo corretamente.');
+      campo_ok = false;
+    }
+    if(desc === ''){
+      $('#input-description').addClass('has-error');
+      $('#msgDescription').html('Preencha o campo corretamente.');
+      campo_ok = false;
+    }
+    if(plat === 'Selecione'){
+      $('#input-plataform').addClass('has-error');
+      $('#msgPlataform').html('Preencha o campo corretamente.');
+      campo_ok = false;
+    }
+    if(categ === 'Selecione'){
+      $('#input-category').addClass('has-error');
+      $('#msgCategory').html('Preencha o campo corretamente.');
+      campo_ok = false;
+    }
+
+    if(campo_ok){
+      this.gameService.RegisterGame(titulo,desc,plat,categ).subscribe(
+        data => {
+          this.gameService.Assign(data['id']).subscribe( dataAssign => {
+            console.log(dataAssign);
+            $('#modal-registergame-success').toggle();
+            location.reload();
+          },
+          err => {
+            console.log(err);
+          }
+          );
+        },
+        err => {
+          console.log(err);
+
+        }
+      );
+
+    }
+    
   
     return false;
   }
