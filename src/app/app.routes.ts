@@ -10,6 +10,7 @@ import { FpsComponent } from './categorias/fps/fps.component';
 import { OutrosComponent } from './categorias/outros/outros.component';
 import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
 import { MinhaspropostasComponent } from './minhaspropostas/minhaspropostas.component';
+import { ListasolicitanteComponent } from './listasolicitante/listasolicitante.component';
 
 
 export const ROUTES: Routes =[
@@ -23,7 +24,8 @@ export const ROUTES: Routes =[
     {path:'meusjogos', component: MeusjogosComponent},
     {path:'minhastrocas', component: MinhastrocasComponent},
     {path:'registrarusuario', component: RegistrarusuarioComponent},
-    {path:'minhaspropostas', component: MinhaspropostasComponent}
+    {path:'minhaspropostas', component: MinhaspropostasComponent},
+    {path:'listasolicitante', component: ListasolicitanteComponent}
     
 
 

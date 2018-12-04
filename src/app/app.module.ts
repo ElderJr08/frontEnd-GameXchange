@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RegisterService } from './registrarusuario/registrarusuario.service';
 import { MinhaspropostasComponent } from './minhaspropostas/minhaspropostas.component';
+import { ListasolicitanteComponent } from './listasolicitante/listasolicitante.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { MinhaspropostasComponent } from './minhaspropostas/minhaspropostas.comp
     UsuariosComponent,
     LogarComponent,
     RegistrarusuarioComponent,
-    MinhaspropostasComponent
+    MinhaspropostasComponent,
+    ListasolicitanteComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit{
   NickName: string;
   FullName: string;
   Genders: any;
+  Notification: string;
 
   constructor(private gameService: GamesService,
               private router: Router) {
@@ -40,6 +41,14 @@ export class HeaderComponent implements OnInit{
     this.isUserLoggedIn = JSON.parse(localStorage.getItem('logado'));
     this.NickName = localStorage.getItem('nickname');
     this.FullName = localStorage.getItem('name');
+    if(localStorage['logado'] !== undefined || Boolean(localStorage['logado'])){
+      this.gameService.Proposals()
+      .subscribe(
+        data =>{
+          this.Notification = data['length'];
+        }
+      );
+    }
   }
   Exit(){
     localStorage.clear();

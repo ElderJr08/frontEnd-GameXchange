@@ -36,10 +36,10 @@
                           </tr>
                           <tr class="" *ngFor="let user of users">
                             <td *ngFor="let col of columns">
-                                {{user[col]}}
+                                <a *ngIf="user">{{user[col]}}</a>
                             </td>
                             <td>
-                              <button>Clique aqui para avaliar</button>
+                              <button (click)="goToUser(user.requesterId, user.proposalId);">Clique aqui para avaliar</button>
                             </td>
                           </tr>
                         </table>

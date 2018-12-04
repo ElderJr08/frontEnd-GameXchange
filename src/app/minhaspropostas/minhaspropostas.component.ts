@@ -17,38 +17,36 @@ export class MinhaspropostasComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage['logado'] !== undefined || Boolean(localStorage['logado'])){
-      var usersDTO =[];
+      let  usersDTO = [];
       this.gameService.Proposals()
       .subscribe(
         data =>{
-          this.gameService.getUser(7).subscribe(
-            user=>{
-              console.log(data);
-              console.log(user);
-              for(var x in data){
-                var userDTO = {
-                  nickname: user['nickname'],
-                  interest: data[x]['game']['name'],
-                  date: data[x]['requestDate']
-                }
-                usersDTO.push(userDTO);
-              }
-              console.log(usersDTO);
-              this.isUserLoggedIn = true;
-              
-            }
-          );
-          this.users = usersDTO;
+          console.log(data);
+         for(var x in data){
+          let userDTO = {
+            "proposalId": data[x]['id'],
+            "requesterId": data[x]['requesterId'],
+            "requesterName": data[x]['requesterName'],
+            "game": data[x]['game']['name'],
+            "requestDate": data[x]['requestDate']         
+          }
+          usersDTO.push(userDTO);
+         }
+         console.log(usersDTO)
           
         }
       );
+      this.isUserLoggedIn = true;
+      this.users = usersDTO;
       this.columns = this.gameService.getColumnsUsers();
     }
   }
   
-  goToUser(requestId){
+  goToUser(requestId, proposalId){
+    console.log(requestId, proposalId);
     localStorage.setItem('requestId',requestId);
-    this.route.navigate(['/list/requester']);
+    localStorage.setItem('proposalId',proposalId);
+    this.route.navigate(['/listasolicitante']);
     return false;
   }
 

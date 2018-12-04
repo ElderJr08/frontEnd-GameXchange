@@ -26,7 +26,7 @@ export class GamesService {
     }
 
     getColumnsUsers(): string[]{//para as colunas
-      return ["nickname","interest","date"];
+      return ["requesterName","game","requestDate"];
     }
 
     getCategorias(){
@@ -113,6 +113,26 @@ export class GamesService {
           headers: httpHeaders
         }
       return this.httpClient.get(`${MY_API}/user/${userId}`,options);
+
+    }
+
+    exchange(proposalId, requestergameId){
+      console.log(proposalId, requestergameId);
+      let httpHeaders = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Cache-Control', 'no-cache')
+        .set('Authorization', localStorage['token']);
+      
+        let options = {
+          headers: httpHeaders
+        }
+      return this.httpClient.post(`${MY_API}/exchange/${proposalId}/accept`,
+      {
+        requesterGameId: requestergameId
+
+      },
+      options);
+
 
     }
 
