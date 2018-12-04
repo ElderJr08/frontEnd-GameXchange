@@ -9,6 +9,7 @@ import { RpgComponent } from './categorias/rpg/rpg.component';
 import { FpsComponent } from './categorias/fps/fps.component';
 import { OutrosComponent } from './categorias/outros/outros.component';
 import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
+import { MinhaspropostasComponent } from './minhaspropostas/minhaspropostas.component';
 
 
 export const ROUTES: Routes =[
@@ -21,7 +22,8 @@ export const ROUTES: Routes =[
     {path:'genero/outros', component: OutrosComponent},
     {path:'meusjogos', component: MeusjogosComponent},
     {path:'minhastrocas', component: MinhastrocasComponent},
-    {path:'registrarusuario', component: RegistrarusuarioComponent}
+    {path:'registrarusuario', component: RegistrarusuarioComponent},
+    {path:'minhaspropostas', component: MinhaspropostasComponent}
     
 
 

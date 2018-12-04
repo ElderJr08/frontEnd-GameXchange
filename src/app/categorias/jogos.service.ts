@@ -25,6 +25,10 @@ export class GamesService {
       return ["name","description","platform"];
     }
 
+    getColumnsUsers(): string[]{//para as colunas
+      return ["nickname","interest","date"];
+    }
+
     getCategorias(){
        return this.http.get(`${MY_API}/category`)
     }
@@ -80,6 +84,38 @@ export class GamesService {
         }, 
         options);
     }
+
+    Propose(gameId){
+      return this.http.post(`${MY_API}/user/games`,{
+        gameId: gameId
+      });
+    }
+
+    Proposals(){
+      let httpHeaders = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Cache-Control', 'no-cache')
+        .set('Authorization', localStorage['token']);
+      
+        let options = {
+          headers: httpHeaders
+        }
+      return this.httpClient.get(`${MY_API}/user/proposals`,options);
+    }
+
+    getUser(userId){
+      let httpHeaders = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Cache-Control', 'no-cache')
+        .set('Authorization', localStorage['token']);
+      
+        let options = {
+          headers: httpHeaders
+        }
+      return this.httpClient.get(`${MY_API}/user/${userId}`,options);
+
+    }
+
 
    
 

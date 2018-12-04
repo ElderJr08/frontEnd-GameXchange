@@ -23,6 +23,7 @@ import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.c
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RegisterService } from './registrarusuario/registrarusuario.service';
+import { MinhaspropostasComponent } from './minhaspropostas/minhaspropostas.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { RegisterService } from './registrarusuario/registrarusuario.service';
     OutrosComponent,
     UsuariosComponent,
     LogarComponent,
-    RegistrarusuarioComponent
+    RegistrarusuarioComponent,
+    MinhaspropostasComponent
   ],
   imports: [
     BrowserModule,
