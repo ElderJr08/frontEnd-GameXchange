@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit{
   isUserLoggedIn: boolean;
   NickName: string;
   FullName: string;
-  Genders: [];
+  Genders: any;
 
   constructor(private gameService: GamesService,
               private router: Router) {

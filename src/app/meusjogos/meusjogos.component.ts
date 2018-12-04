@@ -14,7 +14,7 @@ export class MeusjogosComponent implements OnInit {
   actions: any;
   isUserLoggedIn: boolean;
   columns: string[];
-  Genders: [];
+  Genders: any;
 
   constructor(private gameService: GamesService) {
     this.gameService.getCategorias().pipe(
@@ -26,15 +26,16 @@ export class MeusjogosComponent implements OnInit {
         });
   }
   ngOnInit() {
-
-    this.gameService.getMyGames().subscribe(
-      data =>{
-        console.log(data);
-        this.actions = data;
-        this.isUserLoggedIn = true;
-      }
-    );
-    this.columns = this.gameService.getColumns(); 
+    if(localStorage['logado'] !== undefined || Boolean(localStorage['logado'])){
+      this.gameService.getMyGames().subscribe(
+        data =>{
+          console.log(data);
+          this.actions = data;
+          this.isUserLoggedIn = true;
+        }
+      );
+      this.columns = this.gameService.getColumns();
+    }
   }
 
   removeWarning(id_input, id_small){

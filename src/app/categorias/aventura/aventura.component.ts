@@ -18,27 +18,27 @@ export class AventuraComponent implements OnInit {
   }
  
   ngOnInit() {
-    var newData = [];
-    this.categoria_titulo = localStorage.getItem('Category');
-    this.gameService.action(parseInt(localStorage.getItem('ID_Category')))
-    .subscribe(
-      data => {
-        this.gameService.getMyGames().subscribe(
-          myGames => {
-            for(var x in data['games']){
-              newData.push(data['games'][x]);
-              for(var y in myGames){
-                if(data['games'][x]['id'] === myGames[y]['gameId']){
-                  console.log(data['games'][x]);
-                  newData.splice(Number(x),1,"");
+    if(localStorage['logado'] !== undefined || Boolean(localStorage['logado'])){
+      var newData = [];
+      this.categoria_titulo = localStorage.getItem('Category');
+      this.gameService.action(parseInt(localStorage.getItem('ID_Category')))
+      .subscribe(
+        data => {
+          this.gameService.getMyGames().subscribe(
+            myGames => {
+              for(var x in data['games']){
+                newData.push(data['games'][x]);
+                for(var y in myGames){
+                  if(data['games'][x]['id'] === myGames[y]['gameId']){
+                    newData.splice(Number(x),1,false);
+                  }
                 }
-              }
-            }     
-          }
-        );
-        
-        this.actions = newData;
-        this.isUserLoggedIn = true;
+              }    
+            }
+          );
+          this.actions = newData;
+          this.isUserLoggedIn = true;
+          this.columns = this.gameService.getColumns();
       },
       err =>{
         console.log(err['status']);
@@ -47,12 +47,17 @@ export class AventuraComponent implements OnInit {
         }
       }
     );
-    this.columns = this.gameService.getColumns();
-    /*this.categoria_titulo = localStorage.getItem('Category');
+  }else{
+    this.categoria_titulo = localStorage.getItem('Category');
     this.gameService.action(parseInt(localStorage.getItem('ID_Category')))
-    .subscribe(actions => this.actions = actions);
-    this.columns = this.gameService.getColumns(); */
+    .subscribe(
+      data =>{
+        this.actions = data['games'];
+      }
+    );
+    this.columns = this.gameService.getColumns();
   }
 
+  }
 }
 

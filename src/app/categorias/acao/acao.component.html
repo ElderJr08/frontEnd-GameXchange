@@ -30,31 +30,33 @@
                 <th>Disponível p/ Troca</th>
               </tr>
               <tr class="" *ngFor="let game of actions">
-                <td *ngFor="let col of columns">
-                  {{game[col]}}
-                </td>
-                <ng-container *ngIf="isUserLoggedIn; then interested; else notinterested"></ng-container>
-                <ng-template #interested>
-                  <td>Disponível</td>
-                  <td>
-                    <button type="button" class="btn btn-newgame" data-toggle="modal" data-target="#modal-default">Tenho interesse</button>
+                <ng-container *ngIf="game">
+                  <td *ngFor="let col of columns">
+                    <a>{{game[col]}}</a>
                   </td>
-                  <div class="modal fade" id="modal-default">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Notificação de interesse</h4>
-                        </div>
-                        <div class="modal-body">
-                          <span>O usuário desse jogo foi <b>notificado</b>! Agora é só esperar o <b>Match</b> ;)</span>
+                  <ng-container *ngIf="isUserLoggedIn; then interested; else notinterested"></ng-container>
+                  <ng-template #interested>
+                    <td>Disponível</td>
+                    <td>
+                      <button type="button" class="btn btn-newgame" data-toggle="modal" data-target="#modal-default">Tenho interesse</button>
+                    </td>
+                    <div class="modal fade" id="modal-default">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Notificação de interesse</h4>
+                          </div>
+                          <div class="modal-body">
+                            <span>O usuário desse jogo foi <b>notificado</b>! Agora é só esperar o <b>Match</b> ;)</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </ng-template>
-                <ng-template #notinterested>
-                  <td>Indisponível</td>
-                </ng-template>
+                  </ng-template>
+                  <ng-template #notinterested>
+                    <td>Indisponível</td>
+                  </ng-template>
+              </ng-container>
               </tr>
               <!-- <td>{{actions.games[0].name}}</td> -->
             </table>
